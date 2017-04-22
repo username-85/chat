@@ -56,10 +56,9 @@ int main(void)
 
 			printf("%s : %s\n", buf.mq_name, buf.txt);
 			
-			if (strcmp(buf.txt, "/offline") == 0)
+			if (strcmp(buf.txt, "/offline") == 0) {
 				del_from_unames(buf.mq_name);
-
-			if (add_to_unames(buf.mq_name) != SUCCESS) {
+			} else if (add_to_unames(buf.mq_name) != SUCCESS) {
 				send_msg(MQ_SRV_NAME, buf.mq_name, 
 				         "Too many users online, try later");
 				break;
